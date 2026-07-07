@@ -1,0 +1,442 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dr Mezhoud Hadj — Plateforme Web | Présentation</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700&display=swap');
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: 'Inter', sans-serif; background: #f0f4f8; color: #0f1a1f; }
+  .slide { max-width: 1024px; margin: 0 auto; min-height: 100vh; padding: 60px 48px; display: flex; flex-direction: column; justify-content: center; page-break-after: always; }
+  .slide-content { background: #fff; border-radius: 16px; padding: 48px; box-shadow: 0 1px 3px rgba(0,0,0,.06), 0 4px 24px rgba(0,0,0,.04); }
+  h1 { font-size: 2.5rem; font-weight: 600; line-height: 1.15; letter-spacing: -.02em; }
+  h2 { font-size: 1.6rem; font-weight: 600; line-height: 1.2; letter-spacing: -.01em; margin-bottom: 8px; }
+  h3 { font-size: 1.1rem; font-weight: 600; margin-bottom: 6px; }
+  .subtitle { font-size: 1.1rem; color: #5a6b7a; margin-top: 12px; line-height: 1.6; }
+  .accent { color: #0d6b9e; }
+  .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-top: 24px; }
+  .grid-3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 20px; margin-top: 24px; }
+  .grid-4 { display: grid; grid-template-columns: 1fr 1fr 1fr 1fr; gap: 16px; margin-top: 24px; }
+  .card { background: #f8fafb; border-radius: 12px; padding: 20px; border: 1px solid #d1dee8; }
+  .card h3 { font-size: .95rem; margin-bottom: 4px; }
+  .card p { font-size: .85rem; color: #5a6b7a; line-height: 1.5; }
+  .tag { display: inline-block; padding: 2px 10px; border-radius: 999px; font-size: .75rem; font-weight: 500; background: #e3edf7; color: #0d6b9e; }
+  .screenshot-box { border: 2px dashed #d1dee8; border-radius: 12px; background: #f8fafb; display: flex; align-items: center; justify-content: center; min-height: 200px; color: #5a6b7a; font-size: .85rem; text-align: center; padding: 20px; }
+  .screenshot-box.large { min-height: 320px; }
+  .icon-row { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 16px; }
+  .icon-pill { display: flex; align-items: center; gap: 8px; padding: 8px 14px; border-radius: 999px; background: #f0f4f8; font-size: .8rem; }
+  .badge { display: inline-block; padding: 4px 12px; border-radius: 999px; font-size: .75rem; font-weight: 500; }
+  .badge-green { background: #dcfce7; color: #15803d; }
+  .badge-blue { background: #e3edf7; color: #0d6b9e; }
+  .badge-orange { background: #fef3c7; color: #b45309; }
+  hr { border: none; border-top: 1px solid #d1dee8; margin: 24px 0; }
+  .footer-note { text-align: center; font-size: .75rem; color: #9ca3af; margin-top: 32px; }
+  .logo { display: flex; align-items: center; gap: 8px; margin-bottom: 16px; }
+  .logo svg { width: 28px; height: 28px; }
+  .logo span { font-size: 1rem; font-weight: 600; }
+  @media print {
+    body { background: #fff; }
+    .slide { max-width: 100%; padding: 32px; min-height: auto; }
+    .slide-content { box-shadow: none; border: 1px solid #d1dee8; }
+    .screenshot-box { border: 1px solid #d1dee8; min-height: 160px; }
+    .screenshot-box.large { min-height: 240px; }
+  }
+  @media (max-width: 640px) {
+    .slide { padding: 24px 16px; }
+    .slide-content { padding: 24px; }
+    .grid-2, .grid-3, .grid-4 { grid-template-columns: 1fr; }
+    h1 { font-size: 1.75rem; }
+  }
+</style>
+</head>
+<body>
+
+<!-- SLIDE 1: Cover -->
+<div class="slide">
+  <div class="slide-content" style="text-align:center;padding:64px 48px;">
+    <div class="logo" style="justify-content:center;">
+      <svg viewBox="0 0 24 24" fill="none" stroke="#0d6b9e" stroke-width="1.5"><path d="M19 3H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V5a2 2 0 0 0-2-2Z"/><path d="M9 12h6"/><path d="M12 9v6"/></svg>
+      <span>Dr Mezhoud Hadj</span>
+    </div>
+    <h1>Plateforme Web<br><span class="accent">Cabinet de Néphrologie</span></h1>
+    <p class="subtitle" style="max-width:560px;margin:20px auto 0;">
+      Site public · Portail patient · Administration · Éducation nutritionnelle<br>
+      Alger, 2026
+    </p>
+    <hr style="margin:32px auto;max-width:120px;">
+    <p style="font-size:.85rem;color:#5a6b7a;">Présentation destinée au Dr Mezhoud Hadj</p>
+  </div>
+</div>
+
+<!-- SLIDE 2: Stack -->
+<div class="slide">
+  <div class="slide-content">
+    <h2>Stack technique</h2>
+    <p class="subtitle">Technologies utilisées pour le développement</p>
+    <div class="grid-3" style="margin-top:28px;">
+      <div class="card"><h3>⚡ Next.js 15</h3><p>App Router, Server Components, Rendu hybride statique/dynamique</p></div>
+      <div class="card"><h3>🎨 Tailwind CSS v4</h3><p>Design system custom, theme variables, responsive mobile-first</p></div>
+      <div class="card"><h3>📘 TypeScript</h3><p>Typage strict complet — interfaces, schemas Zod, génériques</p></div>
+      <div class="card"><h3>🧩 Radix UI</h3><p>Composants headless accessibles : Dialog, Tabs, Avatar, Tooltip, Sheet, Toast, Select, Accordion</p></div>
+      <div class="card"><h3>📊 Recharts</h3><p>Graphiques réactifs pour le dashboard admin (barres, lignes)</p></div>
+      <div class="card"><h3>📝 react-hook-form + Zod</h3><p>Validation côté client puissante, schémas de données partagés</p></div>
+    </div>
+    <div class="icon-row" style="margin-top:20px;">
+      <span class="icon-pill">⚛️ React 19</span>
+      <span class="icon-pill">🔄 Framer Motion</span>
+      <span class="icon-pill">🎯 Lucide Icons</span>
+      <span class="icon-pill">📦 Prisma + PostgreSQL</span>
+      <span class="icon-pill">🌐 tw-animate-css</span>
+    </div>
+  </div>
+</div>
+
+<!-- SLIDE 3: Architecture -->
+<div class="slide">
+  <div class="slide-content">
+    <h2>Architecture du projet</h2>
+    <p class="subtitle">31 pages · 3 zones d'authentification · Données mock (Phase 1)</p>
+    <div class="grid-2" style="margin-top:28px;">
+      <div>
+        <div class="card" style="margin-bottom:12px;"><h3>🌐 Site public</h3><p>18 pages — accessible sans auth. Header + Footer global. Contenu éducatif, blog, services, contact, prise de RDV.</p></div>
+        <div class="card" style="margin-bottom:12px;"><h3>🔐 Authentification</h3><p>3 pages — Login, Register, Forgot password. Validation Zod, mock auth context, toggle mot de passe.</p></div>
+        <div class="card"><h3>⚙️ Admin</h3><p>8 pages — Dashboard Recharts, CRUD patients/rdv/régimes/contenu, calendrier, paramètres cabinet.</p></div>
+      </div>
+      <div>
+        <div class="card" style="margin-bottom:12px;"><h3>👤 Patient</h3><p>5 pages — Dashboard stats, RDV, documents, régimes, profil. Sidebar responsive.</p></div>
+        <div class="card" style="margin-bottom:12px;"><h3>📁 Route groups</h3><p><code>(public)</code> → layout header+footer<br><code>auth/</code> → pages standalone<br><code>patient/</code> → sidebar patient<br><code>admin/</code> → sidebar admin</p></div>
+        <div class="card"><h3>📋 Données mock</h3><p>15+ collections dans <code>mock-data.ts</code> + 24 plans nutritionnels. Prisma configuré pour Phase 2.</p></div>
+      </div>
+    </div>
+    <div style="margin-top:16px;text-align:center;">
+      <span class="badge badge-blue">31 routes statiques</span>
+      <span class="badge badge-green" style="margin-left:8px;">4 routes dynamiques</span>
+      <span class="badge badge-orange" style="margin-left:8px;">35 pages total</span>
+    </div>
+  </div>
+</div>
+
+<!-- SLIDE 4: Public Site -->
+<div class="slide">
+  <div class="slide-content">
+    <h2>Site public</h2>
+    <p class="subtitle">18 pages — vitrine du cabinet, éducation, blog, contact</p>
+    <div class="grid-3" style="margin-top:20px;">
+      <div class="card">
+        <h3>🏠 Accueil</h3>
+        <p>Hero, services en pills, statistiques, blog, témoignages, CTA</p>
+        <span class="tag" style="margin-top:8px;">/</span>
+      </div>
+      <div class="card">
+        <h3>🩺 Services</h3>
+        <p>Grille 7 services avec recherche + filtre, page détail par slug</p>
+        <span class="tag" style="margin-top:8px;">/services · /services/[slug]</span>
+      </div>
+      <div class="card">
+        <h3>📖 Éducation</h3>
+        <p>Pathologies (tabs) + 8 catégories nutritionnelles, 24 plans détaillés</p>
+        <span class="tag" style="margin-top:8px;">/education/[slug]/[planSlug]</span>
+      </div>
+      <div class="card">
+        <h3>📝 Blog</h3>
+        <p>8 articles avec slugs, page détail, temps de lecture</p>
+        <span class="tag" style="margin-top:8px;">/blog/[slug]</span>
+      </div>
+      <div class="card">
+        <h3>📅 Prise de RDV</h3>
+        <p>Wizard 6 étapes : type, date, créneau, infos, confirmation</p>
+        <span class="tag" style="margin-top:8px;">/appointment</span>
+      </div>
+      <div class="card">
+        <h3>📬 Contact</h3>
+        <p>Formulaire avec validation Zod, infos cabinet, urgence</p>
+        <span class="tag" style="margin-top:8px;">/contact</span>
+      </div>
+    </div>
+    <div class="screenshot-box" style="margin-top:20px;">
+      📸 Captures d'écran : Page d'accueil · Page éducation · Prise de RDV → <em>insérer ici</em>
+    </div>
+  </div>
+</div>
+
+<!-- SLIDE 5: Auth -->
+<div class="slide">
+  <div class="slide-content">
+    <h2>Authentification (Phase 1 — Mock)</h2>
+    <p class="subtitle">Connexion simulée en attendant le backend JWT (Phase 2)</p>
+    <div class="grid-2" style="margin-top:24px;">
+      <div class="card">
+        <h3>🔑 Login</h3>
+        <p>Email + mot de passe, remember me, toggle visibilité, lien mot de passe oublié. Redirection selon rôle.</p>
+        <div style="margin-top:12px;background:#f0f4f8;padding:12px;border-radius:8px;font-size:.8rem;">
+          <strong>Credentials mock :</strong><br>
+          Admin : admin@drmezhoud.dz / Admin123!<br>
+          Patient : patient@drmezhoud.dz / Patient123!
+        </div>
+      </div>
+      <div>
+        <div class="card" style="margin-bottom:12px;">
+          <h3>📝 Register</h3>
+          <p>Nom, email, téléphone (regex algérien), mot de passe fort (maj+min+chiffre, 8+), confirmation.</p>
+        </div>
+        <div class="card">
+          <h3>🔐 Forgot password</h3>
+          <p>Email → message générique "si un compte existe, un email a été envoyé".</p>
+        </div>
+      </div>
+    </div>
+    <div style="margin-top:16px;background:#e3edf7;padding:16px;border-radius:12px;font-size:.85rem;">
+      ⚡ <strong>AuthGuard :</strong> Le AuthProvider wrappe le root layout. Les dashboards redirect vers /auth/login si non-auth, ou vers le bon dashboard selon le rôle.
+    </div>
+    <div class="screenshot-box" style="margin-top:16px;">
+      📸 Captures : Page login · Register · Forgot password → <em>insérer ici</em>
+    </div>
+  </div>
+</div>
+
+<!-- SLIDE 6: Patient Dashboard -->
+<div class="slide">
+  <div class="slide-content">
+    <h2>Dashboard patient</h2>
+    <p class="subtitle">5 pages — espace personnel du patient</p>
+    <div class="grid-2" style="margin-top:24px;">
+      <div>
+        <div class="card" style="margin-bottom:12px;">
+          <h3>📊 Tableau de bord</h3>
+          <p>4 stats cards (prochain RDV, total, docs, régimes), activité récente, quick actions.</p>
+        </div>
+        <div class="card" style="margin-bottom:12px;">
+          <h3>📅 Rendez-vous</h3>
+          <p>Tabs À venir / Passés / Tous. Infos date, heure, status badge, bouton Annuler (mock).</p>
+        </div>
+        <div class="card">
+          <h3>📄 Documents</h3>
+          <p>Groupés par type (Ordonnance, Bilan, CR...). Upload (UI), preview/download (mock).</p>
+        </div>
+      </div>
+      <div>
+        <div class="card" style="margin-bottom:12px;">
+          <h3>🥗 Régimes</h3>
+          <p>Search + filtre par catégorie. Liens vers les guides éducation nutritionnelle.</p>
+        </div>
+        <div class="card" style="margin-bottom:12px;">
+          <h3>👤 Profil</h3>
+          <p>Formulaire infos personnelles + contact urgence + changement mot de passe (Zod + react-hook-form).</p>
+        </div>
+        <div class="card">
+          <h3>📱 Responsive</h3>
+          <p>Sidebar w-64 collapsible sur mobile avec overlay. Top bar avec avatar + dropdown.</p>
+        </div>
+      </div>
+    </div>
+    <div class="screenshot-box" style="margin-top:20px;">
+      📸 Captures : Dashboard patient · Liste RDV · Profil → <em>insérer ici</em>
+    </div>
+  </div>
+</div>
+
+<!-- SLIDE 7: Admin Dashboard -->
+<div class="slide">
+  <div class="slide-content">
+    <h2>Dashboard administrateur</h2>
+    <p class="subtitle">8 pages — gestion complète du cabinet</p>
+    <div class="grid-3" style="margin-top:20px;">
+      <div class="card"><h3>📊 Tableau de bord</h3><p>4 stat cards + BarChart (consultations/semaine) + LineChart (nouveaux patients/6 mois)</p></div>
+      <div class="card"><h3>👥 Patients</h3><p>Table avec search + pagination, actions view/edit/delete (mock)</p></div>
+      <div class="card"><h3>📅 Rendez-vous</h3><p>Filtre par statut + search. Confirmer / Annuler / Terminer (mock state)</p></div>
+      <div class="card"><h3>🗓️ Calendrier</h3><p>Vue mensuelle, navigable. Clique jour → détail RDV du jour</p></div>
+      <div class="card"><h3>🥗 Régimes</h3><p>CRUD complet : grille, dialog édition HTML, assignation patient, confirmation suppression</p></div>
+      <div class="card"><h3>📁 Documents</h3><p>Upload + assignation patient, groupé par DOCUMENT_TYPES</p></div>
+      <div class="card"><h3>✏️ Contenu</h3><p>3 tabs (Services / FAQ / Témoignages) avec CRUD dialogs complets</p></div>
+      <div class="card"><h3>⚙️ Paramètres</h3><p>Infos cabinet, horaires 7 jours (time inputs), toggles notifications</p></div>
+    </div>
+    <div class="screenshot-box" style="margin-top:20px;">
+      📸 Captures : Dashboard admin · Calendrier · CRUD contenu → <em>insérer ici</em>
+    </div>
+  </div>
+</div>
+
+<!-- SLIDE 8: Education -->
+<div class="slide">
+  <div class="slide-content">
+    <h2>Éducation nutritionnelle</h2>
+    <p class="subtitle">24 plans alimentaires répartis en 8 catégories</p>
+    <div class="grid-2" style="margin-top:20px;">
+      <div>
+        <div class="screenshot-box large" style="min-height:240px;">
+          📸 Diagramme : Arborescence Éducation<br><br>
+          <code style="font-size:.8rem;">
+            /education<br>
+            ├── Pathologies (tabs)<br>
+            └── 8 catégories<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;└── 3 plans<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;└── Contenu HTML
+          </code>
+        </div>
+      </div>
+      <div>
+        <div class="card" style="margin-bottom:12px;">
+          <h3>8 catégories</h3>
+          <p>Hyposodé, Hypoprotidique, Potassium, Phosphore, Dialyse, Post-transplantation, Lithiase, Diabétique</p>
+        </div>
+        <div class="card" style="margin-bottom:12px;">
+          <h3>3 plans par catégorie</h3>
+          <p>Principes généraux, Aliments recommandés/interdits, Exemples de menus</p>
+        </div>
+        <div class="card">
+          <h3>Contenu riche</h3>
+          <p>HTML complet avec tableaux, listes, conseils pratiques — rendu avec <code>dangerouslySetInnerHTML</code> + styles prose</p>
+        </div>
+        <div class="screenshot-box" style="margin-top:12px;">
+          📸 Capture : Page plan détail → <em>insérer ici</em>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- SLIDE 9: Diagramme navigation -->
+<div class="slide">
+  <div class="slide-content">
+    <h2>Plan de navigation</h2>
+    <p class="subtitle">Architecture des routes et flux utilisateur</p>
+    <div class="screenshot-box large" style="margin-top:20px;min-height:360px;flex-direction:column;gap:8px;">
+      <div style="font-weight:600;margin-bottom:8px;">📊 Diagramme de navigation — à insérer ici</div>
+      <div style="font-size:.8rem;color:#5a6b7a;line-height:1.8;text-align:left;font-family:monospace;">
+        ┌─────────────────────────────────────────────────────┐<br>
+        │  Visiteur                                           │<br>
+        │  ├─ / (Accueil) → Services / Blog / Éducation      │<br>
+        │  └─ /appointment → Wizard RDV                      │<br>
+        ├─────────────────────────────────────────────────────┤<br>
+        │  Authentification                                   │<br>
+        │  ├─ /auth/login → /patient ou /admin               │<br>
+        │  ├─ /auth/register → /patient                      │<br>
+        │  └─ /auth/forgot-password                          │<br>
+        ├─────────────────────────────────────────────────────┤<br>
+        │  Patient (/patient/*)                               │<br>
+        │  ├─ / → Dashboard + Quick actions                  │<br>
+        │  ├─ /appointments → Tabs + Cancel                  │<br>
+        │  ├─ /documents → Groupé + Upload                   │<br>
+        │  ├─ /diet-plans → Search + Filtre → /education/    │<br>
+        │  └─ /profile → Formulaires                         │<br>
+        ├─────────────────────────────────────────────────────┤<br>
+        │  Admin (/admin/*)                                   │<br>
+        │  ├─ / → Statistiques + Graphiques                  │<br>
+        │  ├─ /patients → Table + Pagination                 │<br>
+        │  ├─ /appointments → Filtre + Actions               │<br>
+        │  ├─ /calendar → Vue mensuelle                      │<br>
+        │  ├─ /diet-plans → CRUD                             │<br>
+        │  ├─ /documents → Upload + Assign                   │<br>
+        │  ├─ /content → CRUD tabs                           │<br>
+        │  └─ /parametres → Config cabinet                   │<br>
+        └─────────────────────────────────────────────────────┘
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- SLIDE 10: Données -->
+<div class="slide">
+  <div class="slide-content">
+    <h2>Données et structure</h2>
+    <p class="subtitle">Collections mock et types principaux</p>
+    <div class="grid-2" style="margin-top:24px;">
+      <div>
+        <h3 style="font-size:.95rem;margin-bottom:12px;">📦 Collections mock-data.ts</h3>
+        <div style="font-size:.8rem;line-height:2;">
+          <span class="badge badge-blue">mockUsers</span> 1 admin + 5 patients<br>
+          <span class="badge badge-blue">mockPatients</span> 5 profils médicaux<br>
+          <span class="badge badge-blue">mockAppointments</span> 8 rendez-vous<br>
+          <span class="badge badge-blue">mockServices</span> 7 services<br>
+          <span class="badge badge-blue">mockDietPlans</span> 6 plans assignés<br>
+          <span class="badge badge-blue">mockDocuments</span> 7 documents<br>
+          <span class="badge badge-blue">mockTestimonials</span> 6 témoignages<br>
+          <span class="badge badge-blue">mockFAQs</span> 8 FAQ<br>
+          <span class="badge badge-blue">articles</span> 8 articles blog<br>
+          <span class="badge badge-blue">pathologies</span> 6 pathologies
+        </div>
+      </div>
+      <div>
+        <h3 style="font-size:.95rem;margin-bottom:12px;">📄 Plans nutritionnels</h3>
+        <div style="font-size:.8rem;line-height:2;">
+          <span class="badge badge-green">diet-plans.ts</span> 24 plans<br>
+          <span class="badge badge-green">8 catégories</span> × 3 plans<br>
+          <span class="badge badge-green">Contenu HTML</span> riche<br><br>
+          <strong>Helpers :</strong><br>
+          getPlansByCategory()<br>
+          getPlanBySlug()<br>
+          getAllCategories()
+        </div>
+      </div>
+    </div>
+    <hr>
+    <h3 style="font-size:.95rem;margin-bottom:8px;">🔤 Types principaux (types/index.ts)</h3>
+    <div style="font-size:.8rem;line-height:1.8;background:#f0f4f8;padding:16px;border-radius:8px;font-family:monospace;">
+      User, Patient, Appointment, Service, DietPlan, Document,<br>
+      Testimonial, FAQ, DashboardStats, Medecin, Cabinet,<br>
+      Pathologie, Article, DietPlanEntry...
+    </div>
+  </div>
+</div>
+
+<!-- SLIDE 11: Phases -->
+<div class="slide">
+  <div class="slide-content">
+    <h2>Phases et roadmap</h2>
+    <p class="subtitle">Ce qui a été livré et les prochaines étapes</p>
+    <div class="grid-2" style="margin-top:28px;">
+      <div class="card" style="border-left:4px solid #22c55e;">
+        <h3>✅ Phase 1 — Livré</h3>
+        <ul style="font-size:.85rem;line-height:1.8;margin-top:8px;padding-left:18px;color:#5a6b7a;">
+          <li>Site public complet (18 pages)</li>
+          <li>Éducation nutritionnelle (24 plans)</li>
+          <li>Auth mock (login/register/password)</li>
+          <li>Dashboard patient (5 pages)</li>
+          <li>Dashboard admin (8 pages + Recharts)</li>
+          <li>CRUD complet sur données mock</li>
+          <li>Responsive design</li>
+          <li>Animations Framer Motion</li>
+        </ul>
+      </div>
+      <div class="card" style="border-left:4px solid #f59e0b;">
+        <h3>🔜 Phase 2 — À venir</h3>
+        <ul style="font-size:.85rem;line-height:1.8;margin-top:8px;padding-left:18px;color:#5a6b7a;">
+          <li>Backend API (Next.js API Routes)</li>
+          <li>Authentification JWT (cookies, middleware)</li>
+          <li>Base de données PostgreSQL (Prisma)</li>
+          <li>Upload de fichiers réel</li>
+          <li>Notifications email</li>
+          <li>Paiement en ligne</li>
+          <li>Mode sombre</li>
+          <li>i18n Arabe / Français</li>
+        </ul>
+      </div>
+    </div>
+    <div style="margin-top:24px;background:#fef3c7;padding:16px;border-radius:12px;font-size:.85rem;">
+      ⚡ <strong>Prisma déjà configuré</strong> — les schémas et le client Prisma sont prêts. Il suffit de connecter une base PostgreSQL et de migrer.
+    </div>
+  </div>
+</div>
+
+<!-- SLIDE 12: Merci -->
+<div class="slide">
+  <div class="slide-content" style="text-align:center;padding:80px 48px;">
+    <h1 style="font-size:2rem;">Merci</h1>
+    <p class="subtitle" style="max-width:400px;margin:16px auto 0;">
+      Projet développé avec Next.js 15 · Prêt pour la mise en production
+    </p>
+    <hr style="margin:32px auto;max-width:80px;">
+    <p style="font-size:.85rem;color:#5a6b7a;">
+      Dr Mezhoud Hadj — Cabinet de Néphrologie<br>
+      Alger, 2026
+    </p>
+  </div>
+</div>
+
+<div class="footer-note">
+  Généré le 7 juillet 2026 · Pour impression, utilisez Imprimer → Enregistrer au format PDF
+</div>
+
+</body>
+</html>
