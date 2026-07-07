@@ -34,8 +34,8 @@ export function CTASection() {
           <a href={`tel:${CABINET_INFO.telephone}`}>
             <Button
               size="lg"
-              variant="outline"
-              className="gap-2 border-primary-fg/30 text-primary-fg hover:bg-primary-fg/10"
+              variant="secondary"
+              className="gap-2 bg-white text-primary hover:bg-white/90"
             >
               <Phone className="h-5 w-5" />
               {CABINET_INFO.telephone}

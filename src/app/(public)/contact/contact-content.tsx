@@ -1,16 +1,16 @@
 "use client"
 
 import { motion } from "framer-motion"
-import { MapPin, Phone, Mail, Clock, AlertCircle, Send } from "lucide-react"
+import { MapPin, Phone, Mail, Clock, AlertCircle } from "lucide-react"
 import { Card, CardContent } from "@/components/ui/card"
 import { ContactForm } from "@/components/sections/contact-form"
-import { CABINET_INFO } from "@/lib/constants"
+import { CABINET_INFO, MAPS_EMBED_URL, WORKING_HOURS } from "@/lib/constants"
 
 const contactInfo = [
   {
     icon: MapPin,
     title: "Adresse",
-    content: `${CABINET_INFO.adresse}\nAlger, Algérie`,
+    content: CABINET_INFO.adresse,
     href: null,
   },
   {
@@ -53,9 +53,22 @@ export function ContactContent() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.1 }}
-          className="lg:col-span-2"
+          className="lg:col-span-2 space-y-8"
         >
           <ContactForm />
+
+          <div className="rounded-xl overflow-hidden border border-border">
+            <iframe
+              src={MAPS_EMBED_URL}
+              width="100%"
+              height="300"
+              style={{ border: 0 }}
+              allowFullScreen
+              loading="lazy"
+              referrerPolicy="no-referrer-when-downgrade"
+              title="Cabinet du Dr Mezhoud Hadj"
+            />
+          </div>
         </motion.div>
 
         <motion.div
@@ -98,6 +111,30 @@ export function ContactContent() {
                 >
                   {CABINET_INFO.urgence}
                 </a>
+              </div>
+            </CardContent>
+          </Card>
+
+          <Card>
+            <CardContent className="p-4">
+              <div className="flex items-center gap-2 mb-3">
+                <Clock className="h-5 w-5 text-primary" />
+                <p className="text-sm font-medium">Horaires d&apos;ouverture</p>
+              </div>
+              <div className="space-y-1.5">
+                {WORKING_HOURS.map((h) => (
+                  <div
+                    key={h.day}
+                    className="flex justify-between text-sm"
+                  >
+                    <span className="text-muted-foreground">{h.day}</span>
+                    <span className={h.open ? "text-foreground" : "text-muted-foreground"}>
+                      {h.open && h.close
+                        ? `${h.open} – ${h.close}`
+                        : "Fermé"}
+                    </span>
+                  </div>
+                ))}
               </div>
             </CardContent>
           </Card>

@@ -64,9 +64,10 @@ export const DOCUMENT_TYPES = [
 export const MAIN_NAV: NavigationItem[] = [
   { label: "Accueil", href: "/" },
   { label: "À propos", href: "/apropos" },
+  { label: "Services", href: "/services" },
   { label: "Le Cabinet", href: "/cabinet" },
   { label: "Parcours de soins", href: "/parcours" },
-  { label: "Pathologies", href: "/pathologies" },
+  { label: "Éducation", href: "/education" },
   { label: "Blog", href: "/blog" },
   { label: "Contact", href: "/contact" },
 ]

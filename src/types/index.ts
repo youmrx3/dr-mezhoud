@@ -49,10 +49,12 @@ export interface Appointment {
 export interface Service {
   id: string
   nom: string
+  slug: string
   description: string
   duree: number
   prix: number
   icone: string
+  categorie: string
   actif: boolean
 }
 

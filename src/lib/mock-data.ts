@@ -289,64 +289,78 @@ export const mockServices: Service[] = [
   {
     id: "svc-001",
     nom: "Consultation de néphrologie",
+    slug: "consultation-de-nephrologie",
     description: "Consultation complète avec examen clinique, analyse des bilans et plan thérapeutique personnalisé.",
     duree: 30,
     prix: 3000,
     icone: "Stethoscope",
+    categorie: "Consultations",
     actif: true,
   },
   {
     id: "svc-002",
     nom: "Suivi de maladie rénale chronique",
+    slug: "suivi-maladie-renale-chronique",
     description: "Suivi régulier des patients atteints de MRC à tous les stades, avec ajustement thérapeutique.",
     duree: 30,
     prix: 2500,
     icone: "Activity",
+    categorie: "Suivi",
     actif: true,
   },
   {
     id: "svc-003",
     nom: "Prise en charge HTA",
+    slug: "prise-en-charge-hta",
     description: "Diagnostic, traitement et suivi de l'hypertension artérielle d'origine rénale ou essentielle.",
     duree: 30,
     prix: 2500,
     icone: "HeartPulse",
+    categorie: "Consultations",
     actif: true,
   },
   {
     id: "svc-004",
     nom: "Échographie rénale",
+    slug: "echographie-renale",
     description: "Examen échographique des reins, voies urinaires et vessie avec Doppler si nécessaire.",
     duree: 20,
     prix: 4500,
     icone: "Scan",
+    categorie: "Examens",
     actif: true,
   },
   {
     id: "svc-005",
     nom: "Bilan pré-transplantation",
+    slug: "bilan-pre-transplantation",
     description: "Évaluation complète avant transplantation rénale incluant bilans et consultations spécialisées.",
     duree: 60,
     prix: 6000,
     icone: "ClipboardList",
+    categorie: "Transplantation",
     actif: true,
   },
   {
     id: "svc-006",
     nom: "Suivi post-greffe",
+    slug: "suivi-post-greffe",
     description: "Surveillance rapprochée après transplantation rénale pour prévenir le rejet et optimiser la fonction du greffon.",
     duree: 30,
     prix: 3000,
     icone: "Heart",
+    categorie: "Transplantation",
     actif: true,
   },
   {
     id: "svc-007",
     nom: "Conseil diététique rénal",
+    slug: "conseil-dietetique-renal",
     description: "Consultation d'éducation nutritionnelle adaptée aux pathologies rénales avec remise de plans alimentaires.",
     duree: 45,
     prix: 2000,
     icone: "Droplets",
+    categorie: "Éducation",
     actif: true,
   },
 ]
@@ -1048,15 +1062,19 @@ export function getPathologieById(id: string): Pathologie | undefined {
   return pathologies.find((p) => p.id === id)
 }
 
+export function getServiceBySlug(slug: string): Service | undefined {
+  return mockServices.find((s) => s.slug === slug)
+}
+
+export function getServiceCategories(): string[] {
+  return [...new Set(mockServices.map((s) => s.categorie))]
+}
+
 // ── Backward-compat aliases (remove when pages migrate to new types) ──
-export const services: Array<{
-  id: string
-  titre: string
-  description: string
-  icone: string
-}> = mockServices.map((s) => ({
+export const services = mockServices.map((s) => ({
   id: s.id,
   titre: s.nom,
+  slug: s.slug,
   description: s.description,
   icone: s.icone,
 }))

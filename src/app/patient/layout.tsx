@@ -1,0 +1,189 @@
+"use client"
+
+import { useEffect, useState } from "react"
+import Link from "next/link"
+import { usePathname, useRouter } from "next/navigation"
+import {
+  Stethoscope,
+  LayoutDashboard,
+  Calendar,
+  FileText,
+  Apple,
+  User,
+  LogOut,
+  Menu,
+  X,
+  ChevronDown,
+} from "lucide-react"
+import { Button } from "@/components/ui/button"
+import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar"
+import { useAuth } from "@/lib/mock-auth-context"
+
+const patientNav = [
+  { label: "Tableau de bord", href: "/patient", icon: LayoutDashboard },
+  { label: "Rendez-vous", href: "/patient/appointments", icon: Calendar },
+  { label: "Documents", href: "/patient/documents", icon: FileText },
+  { label: "Régimes Alimentaires", href: "/patient/diet-plans", icon: Apple },
+  { label: "Mon Profil", href: "/patient/profile", icon: User },
+]
+
+export default function PatientLayout({
+  children,
+}: {
+  children: React.ReactNode
+}) {
+  const pathname = usePathname()
+  const router = useRouter()
+  const { user, isAuthenticated, logout } = useAuth()
+  const [sidebarOpen, setSidebarOpen] = useState(false)
+  const [dropdownOpen, setDropdownOpen] = useState(false)
+
+  useEffect(() => {
+    if (!isAuthenticated || user?.role !== "patient") {
+      router.push("/auth/login")
+    }
+  }, [isAuthenticated, user, router])
+
+  if (!isAuthenticated || user?.role !== "patient") return null
+
+  const initials = user.name
+    .split(" ")
+    .map((n) => n[0])
+    .join("")
+    .toUpperCase()
+    .slice(0, 2)
+
+  return (
+    <div className="min-h-screen bg-surface flex">
+      {sidebarOpen && (
+        <div
+          className="fixed inset-0 bg-foreground/30 z-40 lg:hidden"
+          onClick={() => setSidebarOpen(false)}
+        />
+      )}
+
+      <aside
+        className={`fixed lg:static inset-y-0 left-0 z-50 w-64 flex flex-col border-r border-border bg-background transition-transform duration-200 ${
+          sidebarOpen ? "translate-x-0" : "-translate-x-full lg:translate-x-0"
+        }`}
+      >
+        <div className="flex items-center justify-between p-5 border-b border-border">
+          <Link href="/patient" className="flex items-center gap-2">
+            <Stethoscope className="h-5 w-5 text-primary" />
+            <span className="font-medium text-sm">Espace Patient</span>
+          </Link>
+          <button
+            className="lg:hidden text-muted-foreground hover:text-foreground"
+            onClick={() => setSidebarOpen(false)}
+          >
+            <X className="h-5 w-5" />
+          </button>
+        </div>
+
+        <nav className="flex-1 p-3 space-y-1 overflow-y-auto">
+          {patientNav.map((item) => {
+            const active =
+              item.href === "/patient"
+                ? pathname === "/patient"
+                : pathname.startsWith(item.href)
+            return (
+              <Link
+                key={item.href}
+                href={item.href}
+                onClick={() => setSidebarOpen(false)}
+                className={`flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm transition-colors ${
+                  active
+                    ? "bg-primary-light text-primary font-medium"
+                    : "text-muted-foreground hover:text-foreground hover:bg-surface"
+                }`}
+              >
+                <item.icon className="h-4 w-4" />
+                {item.label}
+              </Link>
+            )
+          })}
+        </nav>
+
+        <div className="p-3 border-t border-border space-y-1">
+          <Link
+            href="/"
+            className="flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm text-muted-foreground hover:text-foreground hover:bg-surface transition-colors"
+          >
+            <Stethoscope className="h-4 w-4" />
+            Retour au site
+          </Link>
+          <button
+            onClick={logout}
+            className="w-full flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm text-muted-foreground hover:text-danger hover:bg-surface transition-colors"
+          >
+            <LogOut className="h-4 w-4" />
+            Déconnexion
+          </button>
+        </div>
+      </aside>
+
+      <div className="flex-1 flex flex-col min-w-0">
+        <header className="h-14 border-b border-border bg-background flex items-center justify-between px-4 lg:px-6">
+          <button
+            className="lg:hidden text-muted-foreground hover:text-foreground"
+            onClick={() => setSidebarOpen(true)}
+          >
+            <Menu className="h-5 w-5" />
+          </button>
+
+          <div className="hidden lg:block" />
+
+          <div className="relative">
+            <button
+              onClick={() => setDropdownOpen(!dropdownOpen)}
+              className="flex items-center gap-2.5 py-1.5 pl-2.5 pr-3 rounded-lg hover:bg-surface transition-colors"
+            >
+              <Avatar className="h-7 w-7">
+                <AvatarImage src="" alt={user.name} />
+                <AvatarFallback className="text-xs bg-primary-light text-primary">
+                  {initials}
+                </AvatarFallback>
+              </Avatar>
+              <span className="text-sm font-medium hidden sm:block">
+                {user.name}
+              </span>
+              <ChevronDown className="h-3.5 w-3.5 text-muted-foreground" />
+            </button>
+
+            {dropdownOpen && (
+              <>
+                <div
+                  className="fixed inset-0 z-10"
+                  onClick={() => setDropdownOpen(false)}
+                />
+                <div className="absolute right-0 top-full mt-1.5 w-56 z-20 rounded-xl border border-border bg-background shadow-lg p-1.5 space-y-0.5">
+                  <Link
+                    href="/patient/profile"
+                    onClick={() => setDropdownOpen(false)}
+                    className="flex items-center gap-2.5 px-3 py-2 rounded-lg text-sm text-muted-foreground hover:text-foreground hover:bg-surface transition-colors"
+                  >
+                    <User className="h-4 w-4" />
+                    Mon Profil
+                  </Link>
+                  <hr className="border-border mx-2" />
+                  <button
+                    onClick={() => {
+                      setDropdownOpen(false)
+                      logout()
+                    }}
+                    className="w-full flex items-center gap-2.5 px-3 py-2 rounded-lg text-sm text-muted-foreground hover:text-danger hover:bg-surface transition-colors"
+                  >
+                    <LogOut className="h-4 w-4" />
+                    Déconnexion
+                  </button>
+                </div>
+              </>
+            )}
+          </div>
+        </header>
+
+        <div className="flex-1 p-4 lg:p-8 overflow-auto">{children}</div>
+      </div>
+    </div>
+  )
+}
