@@ -1,0 +1,105 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+@theme {
+  --color-background: #ffffff;
+  --color-surface: #f8fafb;
+  --color-surface-2: #f0f7f4;
+  --color-primary: #0d7a5f;
+  --color-primary-hover: #0a6550;
+  --color-primary-light: #e6f4f0;
+  --color-primary-fg: #ffffff;
+  --color-accent: #34a98b;
+  --color-accent-light: #d0ede6;
+  --color-success: #22c55e;
+  --color-success-light: #dcfce7;
+  --color-warning: #f59e0b;
+  --color-warning-light: #fef3c7;
+  --color-danger: #ef4444;
+  --color-danger-light: #fee2e2;
+  --color-info: #3b82f6;
+  --color-info-light: #dbeafe;
+  --color-foreground: #0f1f1a;
+  --color-muted-foreground: #5a7a72;
+  --color-muted: #e9f0ee;
+  --color-border: #d1e4df;
+  --color-ring: #0d7a5f;
+  --radius: 0.5rem;
+
+  --font-sans: "Geist Sans", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "Geist Mono", ui-monospace, monospace;
+
+  --text-h1: 2.25rem;
+  --text-h1--font-weight: 500;
+  --text-h2: 1.75rem;
+  --text-h2--font-weight: 500;
+  --text-h3: 1.25rem;
+  --text-h3--font-weight: 500;
+  --text-body: 1rem;
+  --text-body--font-weight: 400;
+  --text-body--line-height: 1.7;
+
+  --radius-card: 0.75rem;
+  --radius-pill: 9999px;
+}
+
+@layer base {
+  * {
+    border-color: var(--color-border);
+  }
+  body {
+    background-color: var(--color-background);
+    color: var(--color-foreground);
+    font-family: var(--font-sans);
+    font-size: var(--text-body);
+    font-weight: var(--text-body--font-weight);
+    line-height: var(--text-body--line-height);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+  h1 {
+    font-size: var(--text-h1);
+    font-weight: var(--text-h1--font-weight);
+    line-height: 1.2;
+  }
+  h2 {
+    font-size: var(--text-h2);
+    font-weight: var(--text-h2--font-weight);
+    line-height: 1.3;
+  }
+  h3 {
+    font-size: var(--text-h3);
+    font-weight: var(--text-h3--font-weight);
+    line-height: 1.4;
+  }
+}
+
+@layer utilities {
+  .container-main {
+    width: 100%;
+    margin-inline: auto;
+    padding-inline: 1rem;
+  }
+  @media (min-width: 640px) {
+    .container-main {
+      max-width: 640px;
+    }
+  }
+  @media (min-width: 768px) {
+    .container-main {
+      max-width: 768px;
+    }
+  }
+  @media (min-width: 1024px) {
+    .container-main {
+      max-width: 1024px;
+    }
+  }
+  @media (min-width: 1280px) {
+    .container-main {
+      max-width: 1280px;
+    }
+  }
+}
